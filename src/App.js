@@ -1,7 +1,9 @@
 function App() {
   return (
     <div>
-      Some random text to display
+      <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
     </div>
   );
 }
