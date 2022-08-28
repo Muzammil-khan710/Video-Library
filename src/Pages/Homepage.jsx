@@ -1,7 +1,5 @@
 import React from 'react'
-import { Header } from '../Components/Header'
-import { Main } from '../Components/Main'
-import Sidebar from '../Components/Sidebar'
+import { Header, Main, Sidebar } from "../Components/index"
 
 const Homepage = () => {
   return (
