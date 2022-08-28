@@ -1,14 +1,15 @@
 import { Header } from "./Components/Header";
+import { Main } from "./Components/Main";
 import Sidebar from "./Components/Sidebar";
 
 function App() {
   return (
     <div>
       <Header/>
+      <div className="flex">
       <Sidebar/>
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+      <Main/>
+      </div>
     </div>
   );
 }
