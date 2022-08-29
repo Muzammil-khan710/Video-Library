@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import { Header, Sidebar } from '../Components'
 
-const Loginpage = () => {
+const LoginPage = () => {
   return (
     <div>
         <Header/>
@@ -20,10 +21,11 @@ const Loginpage = () => {
 
                 </form>
                 <button className='mt-3 bg-[#334756]  hover:bg-slate-500 self-center px-3 py-2 text-white rounded'>Use Test Credentials</button>
+                <div className='text-center mt-2'>New here? <Link className='underline' to="/signup">sign up</Link> </div>
             </div>
         </div>
     </div>
   )
 }
 
-export { Loginpage }
+export { LoginPage }
