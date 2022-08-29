@@ -5,5 +5,6 @@ import { HistoryPage } from "./History";
 import { LikedPage } from "./Liked";
 import { WatchLaterPage } from "./WatchLater";
 import { PlaylistPage } from "./Playlist";
+import { PlayerPage } from "./PlayerPage";
 
-export { Homepage, LoginPage, SignupPage, HistoryPage, LikedPage, WatchLaterPage, PlaylistPage }
+export { Homepage, LoginPage, SignupPage, HistoryPage, LikedPage, WatchLaterPage, PlaylistPage, PlayerPage }
