@@ -7,7 +7,7 @@ import { useVideo } from '../Context/VideoContext';
 const Main = () => {
 
   const { playerHandler } = useVideo()
-  
+
   return (
     <div className='container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44'>
         {videos.map(({_id, title, image, description, views, date, creator}) => {
@@ -23,7 +23,6 @@ const Main = () => {
                         <button><LikeIcon/></button>
                         <button><PlaylistIcon/></button>
                         <button><WatchLater/></button>
-                        <Link to={`/player/${_id}`}>Play me</Link>
                     </div>
                 </div>
             )
