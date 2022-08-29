@@ -10,7 +10,7 @@ const Sidebar = () => {
         <Link to="/history" className='flex items-center my-5'><HistoryIcon/> <span className='hidden sm:block  px-2'>History</span></Link>
         <li className='flex items-center my-5'><PlaylistIcon/> <span className='hidden sm:block  px-2'>Playlist</span></li>
         <Link to="/liked" className='flex items-center my-5'><LikeIcon/> <span className='hidden sm:block  px-2'>Liked</span></Link>
-        <li className='flex items-center my-5'><WatchLater/> <span className='hidden sm:block  px-2'>Watch Later</span></li>
+        <Link to="/watchlater" className='flex items-center my-5'><WatchLater/> <span className='hidden sm:block  px-2'>Watch Later</span></Link>
     </div>
   ) 
 }
