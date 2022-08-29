@@ -1,5 +1,6 @@
 import React from 'react'
 import { UserProfile } from '../Assets/AllSvg'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -8,8 +9,7 @@ const Header = () => {
         <div className='italic text-6xl'>MTunes</div>
         <div className='flex justify-between items-center gap-2'>
             <UserProfile/>
-            <button className='bg-[#334756] px-5 py-2 rounded-md hover:bg-slate-500 active:bg-slate-400'>Login</button>
-
+            <Link to='/login' className='bg-[#334756] px-5 py-2 rounded-md hover:bg-slate-500 active:bg-slate-400'>Login</Link>
         </div>
     </div>
   )
