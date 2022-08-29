@@ -1,9 +1,13 @@
-import { Homepage } from "./Pages/index";
+import { Homepage, Loginpage } from "./Pages/index";
+import { Routes, Route } from  "react-router-dom"
 
 function App() {
   return (
     <>
-      <Homepage/>
+    <Routes>
+      <Route path="/" element={<Homepage/>}/>
+      <Route path="/login" element={<Loginpage/>} />
+    </Routes>
     </>
   );
 }
