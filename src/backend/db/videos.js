@@ -14,7 +14,7 @@ export const videos = [
     image: waalian,
     category:"Punjabi",
     date: "22 Feb 2020",
-    views : '329M'
+    views : '330M'
 
   },
   {
@@ -46,7 +46,7 @@ export const videos = [
     description: "Gulshan Kumar presents Bhushan Kumar's LAHORE in the voice of 'Guru Randhawa', The song is composed and penned by Guru Randhawa. Hit 'LIKE' if you ♥ this song",
     image:lahore,
     category:"T-series",
-    date: "14 Debc 2017",
+    date: "14 Dec 2017",
     views : '1B',
   },
 
