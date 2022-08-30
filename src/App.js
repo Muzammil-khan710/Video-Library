@@ -1,4 +1,4 @@
-import { Homepage, LoginPage, SignupPage, HistoryPage, LikedPage, WatchLaterPage, PlaylistPage } from "./Pages/index";
+import { Homepage, LoginPage, SignupPage, HistoryPage, LikedPage, WatchLaterPage, PlaylistPage, PlayerPage } from "./Pages/index";
 import { Routes, Route } from  "react-router-dom"
 
 const App = () =>  {
@@ -12,6 +12,7 @@ const App = () =>  {
       <Route path="/liked" element={<LikedPage/>}/>
       <Route path="/watchlater" element={<WatchLaterPage/>}/>
       <Route path="/playlist" element={<PlaylistPage/>}/>
+      <Route path="/player/:videoid" element={<PlayerPage/>}/>
     </Routes>
     </>
   );
