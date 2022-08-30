@@ -5,7 +5,7 @@ import { useAuth } from '../Context/AuthContext'
 
 const Header = () => {
  
-  const { logout } = useAuth()
+  const { logout, user } = useAuth()
 
   const navigate = useNavigate();
 
@@ -20,8 +20,11 @@ const Header = () => {
         <div className='italic text-6xl'>MTunes</div>
         <div className='flex justify-between items-center gap-2'>
             <UserProfile/>
+            {!user ? 
             <Link to='/login' className='bg-[#334756] px-5 py-2 rounded-md hover:bg-slate-500 active:bg-slate-400'>Login</Link>
-            <button className='bg-white' onClick={logoutHandler}>logout bruuh</button>
+            :
+            <button  className='bg-[#334756] px-5 py-2 rounded-md hover:bg-slate-500 active:bg-slate-400'onClick={logoutHandler}>logout</button>
+}
         </div>
     </div>
   )
