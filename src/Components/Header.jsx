@@ -20,6 +20,7 @@ const Header = () => {
         <div className='italic text-6xl'>MTunes</div>
         <div className='flex justify-between items-center gap-2'>
             <UserProfile/>
+            <div>{user ? `Hello! ${user.firstName}` : ""}</div>
             {!user ? 
             <Link to='/login' className='bg-[#334756] px-5 py-2 rounded-md hover:bg-slate-500 active:bg-slate-400'>Login</Link>
             :
