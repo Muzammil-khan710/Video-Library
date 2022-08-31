@@ -2,9 +2,6 @@ import { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios'
 import { useVideo } from './VideoContext';
 import { useNavigate } from 'react-router-dom';
-// import { Navigate } from 'react-router-dom';
-
-
 
 const LikeContext = createContext()
 
@@ -27,15 +24,6 @@ const LikeProvider = ({children}) => {
         :  likeVideo(_id) 
         ) : ( navigate('/login')  )
       }
-
-    // useEffect(() => {
-    //     (async () => {
-    //       const encodedToken = localStorage.getItem("token");
-    //       const config = { headers: { authorization: encodedToken } };
-    //       const {data} = await axios.get("/api/user/likes", config);
-    //       setLikeVid(data.likes);
-    //     })();
-    // }, [])
 
     const likeVideo = async (_id) => {
         const encodedToken = localStorage.getItem("token")
