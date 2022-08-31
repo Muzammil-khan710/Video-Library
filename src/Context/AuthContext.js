@@ -40,7 +40,7 @@ const AuthProvider = ({children}) => {
         e.preventDefault()
 
         try {
-            const { data } =  await axios.post(`api/auth/signup`, newuser)
+            const { data } =  await axios.post(`/api/auth/signup`, newuser)
             setUser(data.createdUser)
             setToken(data.encodedToken)
             localStorage.setItem("token", JSON.stringify(data.encodedToken))

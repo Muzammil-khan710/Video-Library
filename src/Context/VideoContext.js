@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { videos } from "../backend/db/videos";
 import axios from "axios";
 
 const VideoContext = createContext()
@@ -11,7 +10,7 @@ const VideoProvider = ({children}) => {
   const [ playerArr, setPlayerArr] = useState([])
 
   const playerHandler = (_id) => {
-    const obj = videos.find((video) => video._id === _id);
+    const obj = videoList.find((video) => video._id === _id);
     setPlayerArr([obj])
   }
 

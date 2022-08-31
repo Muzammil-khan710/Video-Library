@@ -12,6 +12,12 @@ const LikeProvider = ({children}) => {
  
     const { videoList  } = useVideo()
 
+    const likeToggler = (_id) => {
+        likeVid.find((item) => item._id === _id)
+        ?  dislikeVideo(_id)  
+        :  likeVideo(_id) 
+      }
+
     useEffect(() => {
         (async () => {
           const encodedToken = localStorage.getItem("token");
@@ -48,7 +54,7 @@ const LikeProvider = ({children}) => {
         }
 
         try {
-            const { data } = await axios.delete(`api/user/likes/${_id}`, config)
+            const { data } = await axios.delete(`/api/user/likes/${_id}`, config)
             setLikeVid(data.likes)
         } catch (error) {
             console.log({error})
@@ -56,7 +62,7 @@ const LikeProvider = ({children}) => {
     }
 
     return(
-        <LikeContext.Provider value={{likeVid, likeVideo , dislikeVideo}}>
+        <LikeContext.Provider value={{likeVid, likeVideo , dislikeVideo, likeToggler}}>
             {children}
         </LikeContext.Provider>
     )
