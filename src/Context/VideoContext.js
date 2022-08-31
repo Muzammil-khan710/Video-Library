@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { videos } from "../backend/db/videos";
+import axios from "axios";
 
 const VideoContext = createContext()
 
@@ -14,10 +15,17 @@ const VideoProvider = ({children}) => {
     setPlayerArr([obj])
   }
 
-  console.log(playerArr)
+  const [ videoList, setVideoList ] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const {data} = await axios.get("/api/videos");
+      setVideoList(data.videos);
+    })();
+}, [])
 
     return(
-        <VideoContext.Provider value={{playerArr, setPlayerArr, playerHandler }}>
+        <VideoContext.Provider value={{playerArr, setPlayerArr, playerHandler, videoList }}>
             {children}
         </VideoContext.Provider>
     )
