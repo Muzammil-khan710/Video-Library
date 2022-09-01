@@ -3,12 +3,15 @@ import { Header, Sidebar } from "../Components";
 import { useLike } from "../Context/LikeContext";
 import { Link } from "react-router-dom";
 import { useVideo } from "../Context/VideoContext";
-import { LikeFill, LikeIcon, PlaylistIcon, WatchLater } from "../Assets/AllSvg";
+import { LikeFill, LikeIcon, PlaylistIcon, WatchLater, WatchLaterFill } from "../Assets/AllSvg";
+import { useWatchLater } from "../Context/WatchlaterContext";
 
 const LikedPage = () => {
   const { playerHandler } = useVideo();
 
   const { likeVid, likeToggler } = useLike();
+
+  const { watchLaterToggler, watchLaterVideos  } = useWatchLater()
 
   return (
     <div>
@@ -41,9 +44,9 @@ const LikedPage = () => {
                   <button>
                     <PlaylistIcon />
                   </button>
-                  <button>
-                    <WatchLater />
-                  </button>
+                  <button onClick={() => watchLaterToggler(_id)}>
+                  {watchLaterVideos.find((item) => item._id === _id) ? ( <WatchLaterFill /> ) : ( <WatchLater />) }
+                </button>
                 </div>
               </div>
             );
