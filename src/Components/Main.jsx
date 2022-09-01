@@ -5,6 +5,7 @@ import {
   LikeIcon,
   PlaylistIcon,
   WatchLater,
+  WatchLaterFill,
 } from "./../Assets/AllSvg";
 import { useVideo } from "../Context/VideoContext";
 import { useLike } from "../Context/LikeContext";
@@ -15,7 +16,7 @@ const Main = () => {
 
   const { likeVid, likeToggler } = useLike();
 
-  const { addToWatchLater, removeFromWatchLater } = useWatchLater()
+  const {  watchLaterVideos ,watchLaterToggler } = useWatchLater()
 
   return (
     <div className="container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44">
@@ -45,11 +46,13 @@ const Main = () => {
                 <button>
                   <PlaylistIcon />
                 </button>
-    {/* console.log('watchlater videos', watchLaterVideos) */}
-                <button onClick={() => addToWatchLater(_id)}>
-                  <WatchLater />
+                <button onClick={() => watchLaterToggler(_id)}>
+                  {watchLaterVideos.find((item) => item._id === _id) ? (
+                    <WatchLaterFill />
+                  ) : (
+                    <WatchLater />
+                  )}
                 </button>
-                <button onClick={() => removeFromWatchLater(_id) } >remove wtch</button>
               </div>
             </div>
           );
