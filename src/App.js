@@ -2,13 +2,14 @@ import { Homepage, LoginPage, SignupPage, HistoryPage, LikedPage, WatchLaterPage
 import { Routes, Route } from  "react-router-dom"
 import { Authroute } from './Components/Authroute';
 import { Privateroute } from './Components/Privateroute';
+import Mockman from "mockman-js";
 
 const App = () =>  {
   return (
     <>
     <Routes>
       <Route path="/" element={<Homepage/>}/>
-
+      <Route path="/mockman" element={<div className="MockAPI"><Mockman /></div>}/>
       <Route element={<Authroute/>}>
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/signup" element={<SignupPage/>}/>
