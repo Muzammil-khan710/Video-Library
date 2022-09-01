@@ -5,14 +5,20 @@ import {
   LikeIcon,
   PlaylistIcon,
   WatchLater,
+  WatchLaterFill,
 } from "./../Assets/AllSvg";
 import { useVideo } from "../Context/VideoContext";
 import { useLike } from "../Context/LikeContext";
+import { useWatchLater } from "../Context/WatchlaterContext";
 
 const Main = () => {
   const { playerHandler, videoList } = useVideo();
 
   const { likeVid, likeToggler } = useLike();
+
+  const {  watchLaterVideos ,watchLaterToggler } = useWatchLater()
+
+  const userFromLocal = localStorage.getItem("user")
 
   return (
     <div className="container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44">
@@ -33,17 +39,13 @@ const Main = () => {
               </Link>
               <div className="flex justify-around mt-2">
                 <button onClick={() => likeToggler(_id)}>
-                  {likeVid.find((item) => item._id === _id) ? (
-                    <LikeFill />
-                  ) : (
-                    <LikeIcon />
-                  )}
+                  { userFromLocal ? ( likeVid.find((item) => item._id === _id) ? ( <LikeFill /> ) : ( <LikeIcon />) ) : ( <LikeIcon/>)}
                 </button>
                 <button>
                   <PlaylistIcon />
                 </button>
-                <button>
-                  <WatchLater />
+                <button onClick={() => watchLaterToggler(_id)}>
+                  { userFromLocal ? ( watchLaterVideos.find((item) => item._id === _id) ? ( <WatchLaterFill /> ) : ( <WatchLater />) ) : ( <WatchLater/>)}
                 </button>
               </div>
             </div>

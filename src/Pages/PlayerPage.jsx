@@ -2,14 +2,17 @@ import React from "react";
 import { Header, Sidebar } from "../Components";
 import { useParams, Link } from "react-router-dom";
 import { videos } from "./../backend/db/videos";
-import { LikeFill, LikeIcon, PlaylistIcon, WatchLater } from "../Assets/AllSvg";
+import { LikeFill, LikeIcon, PlaylistIcon, WatchLater, WatchLaterFill } from "../Assets/AllSvg";
 import { useVideo } from "../Context/VideoContext";
 import { useLike } from "../Context/LikeContext";
+import { useWatchLater } from "../Context/WatchlaterContext";
 
 const PlayerPage = () => {
   const { videoid } = useParams();
   const {likeToggler, likeVid} = useLike()
   const { playerArr, playerHandler} = useVideo();
+  const {  watchLaterVideos, watchLaterToggler } = useWatchLater()
+  const encodedToken = localStorage.getItem("token")
 
   return (
     <div>
@@ -39,17 +42,13 @@ const PlayerPage = () => {
                   <div>{views}</div>
                   <div className="flex justify-left gap-[3rem] mt-2">
                     <button onClick={() => likeToggler(_id)}>
-                      {likeVid.find((item) => item._id === _id) ? (
-                        <LikeFill />
-                      ) : (
-                        <LikeIcon />
-                      )}
+                    { encodedToken ? ( likeVid.find((item) => item._id === _id) ? ( <LikeFill /> ) : ( <LikeIcon />) ) : ( <LikeIcon/>)}
                     </button>
                     <button>
                       <PlaylistIcon />
                     </button>
-                    <button>
-                      <WatchLater />
+                    <button onClick={() => watchLaterToggler(_id)}>
+                    { encodedToken ? ( watchLaterVideos.find((item) => item._id === _id) ? ( <WatchLaterFill /> ) : ( <WatchLater />) ) : ( <WatchLater/>)}
                     </button>
                   </div>
                 </div>
