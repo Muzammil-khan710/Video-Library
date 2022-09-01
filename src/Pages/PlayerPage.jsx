@@ -2,14 +2,16 @@ import React from "react";
 import { Header, Sidebar } from "../Components";
 import { useParams, Link } from "react-router-dom";
 import { videos } from "./../backend/db/videos";
-import { LikeFill, LikeIcon, PlaylistIcon, WatchLater } from "../Assets/AllSvg";
+import { LikeFill, LikeIcon, PlaylistIcon, WatchLater, WatchLaterFill } from "../Assets/AllSvg";
 import { useVideo } from "../Context/VideoContext";
 import { useLike } from "../Context/LikeContext";
+import { useWatchLater } from "../Context/WatchlaterContext";
 
 const PlayerPage = () => {
   const { videoid } = useParams();
   const {likeToggler, likeVid} = useLike()
   const { playerArr, playerHandler} = useVideo();
+  const {  watchLaterVideos, watchLaterToggler } = useWatchLater()
 
   return (
     <div>
@@ -48,9 +50,12 @@ const PlayerPage = () => {
                     <button>
                       <PlaylistIcon />
                     </button>
-                    <button>
-                      <WatchLater />
-                    </button>
+                    <button onClick={() => watchLaterToggler(_id)}>
+                  {watchLaterVideos.find((item) => item._id === _id) ? (
+                    <WatchLaterFill />
+                  ) : (
+                    <WatchLater />
+                  )}</button>
                   </div>
                 </div>
               );
