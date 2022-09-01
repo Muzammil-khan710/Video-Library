@@ -1,9 +1,10 @@
 import { createContext } from 'react';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import  axios  from 'axios';
 import { useVideo } from './VideoContext';
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from './AuthContext';
 
 const WatchLaterContext = createContext()
 
@@ -15,12 +16,22 @@ const WatchLaterProvider = ({children}) => {
 
     const { videoList } = useVideo()
 
-    const encodedToken = localStorage.getItem("token")
+    const { user } = useAuth()
+
+    const userFromLocal = localStorage.getItem("user")
+
+    useEffect(() => {
+        if(user) {
+            setWatchLaterVideos(user.watchlater)
+        } else {
+            setWatchLaterVideos([])
+        }
+    }, [user])
 
     const navigate = useNavigate()
 
     const watchLaterToggler = (_id) => {
-        (encodedToken) ? (
+        (userFromLocal) ? (
         watchLaterVideos.find((item) => item._id === _id)
         ?  removeFromWatchLater(_id)  
         :  addToWatchLater(_id) 

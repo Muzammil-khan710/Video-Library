@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
@@ -28,8 +27,7 @@ const AuthProvider = ({children}) => {
         setUser(data.foundUser);
         setToken(data.encodedToken)
         localStorage.setItem("token", JSON.stringify(data.encodedToken))
-        localStorage.setItem("user", JSON.stringify({ _id : data.foundUser._id, email : data.foundUser.email, firstName : data.foundUser.firstName, lastName : data.foundUser.lastName}))
-
+        localStorage.setItem("user", JSON.stringify(data.foundUser))
        } catch (error) {
             console.log({error})
        }
@@ -44,8 +42,7 @@ const AuthProvider = ({children}) => {
             setUser(data.createdUser)
             setToken(data.encodedToken)
             localStorage.setItem("token", JSON.stringify(data.encodedToken))
-            localStorage.setItem("user",  JSON.stringify({ _id : data.createdUser._id, email : data.createdUser.email, firstName : data.createdUser.firstName, lastName : data.createdUser.lastName, password : data.createdUser.password}) )
-    
+            localStorage.setItem("user", JSON.stringify(data.createdUser))    
         } catch (error) {
             console.log({error})
         }

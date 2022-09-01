@@ -1,7 +1,8 @@
-import { createContext, useState, useContext} from 'react';
+import { createContext, useState, useContext, useEffect} from 'react';
 import axios from 'axios'
 import { useVideo } from './VideoContext';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 const LikeContext = createContext()
 
@@ -9,16 +10,26 @@ const useLike = () => useContext(LikeContext)
 
 const LikeProvider = ({children}) => {
 
+    const { user } = useAuth()
+
     const [likeVid, setLikeVid] = useState([])
  
     const { videoList  } = useVideo()
 
-    const encodedToken = localStorage.getItem("token");
+    const userFromLocal = localStorage.getItem("user")
+
+    useEffect(() => {
+        if(user) {
+            setLikeVid(user.likes)
+        } else {
+            setLikeVid([])
+        }
+    }, [user])
 
     const navigate = useNavigate()
 
     const likeToggler = (_id) => {
-        (encodedToken) ? (
+        (userFromLocal) ? (
         likeVid.find((item) => item._id === _id)
         ?  dislikeVideo(_id)  
         :  likeVideo(_id) 
@@ -32,16 +43,21 @@ const LikeProvider = ({children}) => {
                 authorization : encodedToken
             }
         }
+
        
         try {
             const vid = videoList.find((vidfind) => vidfind._id === _id);
-            const { data } = await axios.post("/api/user/likes", { video :  vid}, config )
-            setLikeVid(data.likes)
+            const  response = await axios.post("/api/user/likes", { video :  vid}, config )
+            setLikeVid(response.data.likes)
+            console.log(response)
 
         } catch (error) {
             console.log({error})
         }
     }
+
+    console.log('likes one', user)
+
 
     const dislikeVideo = async (_id) => {
         const encodedToken = localStorage.getItem("token")
