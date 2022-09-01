@@ -8,11 +8,14 @@ import {
 } from "./../Assets/AllSvg";
 import { useVideo } from "../Context/VideoContext";
 import { useLike } from "../Context/LikeContext";
+import { useWatchLater } from "../Context/WatchlaterContext";
 
 const Main = () => {
   const { playerHandler, videoList } = useVideo();
 
   const { likeVid, likeToggler } = useLike();
+
+  const { addToWatchLater, removeFromWatchLater } = useWatchLater()
 
   return (
     <div className="container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44">
@@ -42,9 +45,11 @@ const Main = () => {
                 <button>
                   <PlaylistIcon />
                 </button>
-                <button>
+    {/* console.log('watchlater videos', watchLaterVideos) */}
+                <button onClick={() => addToWatchLater(_id)}>
                   <WatchLater />
                 </button>
+                <button onClick={() => removeFromWatchLater(_id) } >remove wtch</button>
               </div>
             </div>
           );
