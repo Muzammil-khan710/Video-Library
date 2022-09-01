@@ -18,6 +18,8 @@ const Main = () => {
 
   const {  watchLaterVideos ,watchLaterToggler } = useWatchLater()
 
+  const encodedToken = localStorage.getItem("token")
+
   return (
     <div className="container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44">
       {videoList.map(
@@ -37,21 +39,13 @@ const Main = () => {
               </Link>
               <div className="flex justify-around mt-2">
                 <button onClick={() => likeToggler(_id)}>
-                  {likeVid.find((item) => item._id === _id) ? (
-                    <LikeFill />
-                  ) : (
-                    <LikeIcon />
-                  )}
+                  { encodedToken ? ( likeVid.find((item) => item._id === _id) ? ( <LikeFill /> ) : ( <LikeIcon />) ) : ( <LikeIcon/>)}
                 </button>
                 <button>
                   <PlaylistIcon />
                 </button>
                 <button onClick={() => watchLaterToggler(_id)}>
-                  {watchLaterVideos.find((item) => item._id === _id) ? (
-                    <WatchLaterFill />
-                  ) : (
-                    <WatchLater />
-                  )}
+                  { encodedToken ? ( watchLaterVideos.find((item) => item._id === _id) ? ( <WatchLaterFill /> ) : ( <WatchLater />) ) : ( <WatchLater/>)}
                 </button>
               </div>
             </div>

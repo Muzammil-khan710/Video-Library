@@ -12,6 +12,7 @@ const PlayerPage = () => {
   const {likeToggler, likeVid} = useLike()
   const { playerArr, playerHandler} = useVideo();
   const {  watchLaterVideos, watchLaterToggler } = useWatchLater()
+  const encodedToken = localStorage.getItem("token")
 
   return (
     <div>
@@ -41,21 +42,14 @@ const PlayerPage = () => {
                   <div>{views}</div>
                   <div className="flex justify-left gap-[3rem] mt-2">
                     <button onClick={() => likeToggler(_id)}>
-                      {likeVid.find((item) => item._id === _id) ? (
-                        <LikeFill />
-                      ) : (
-                        <LikeIcon />
-                      )}
+                    { encodedToken ? ( likeVid.find((item) => item._id === _id) ? ( <LikeFill /> ) : ( <LikeIcon />) ) : ( <LikeIcon/>)}
                     </button>
                     <button>
                       <PlaylistIcon />
                     </button>
                     <button onClick={() => watchLaterToggler(_id)}>
-                  {watchLaterVideos.find((item) => item._id === _id) ? (
-                    <WatchLaterFill />
-                  ) : (
-                    <WatchLater />
-                  )}</button>
+                    { encodedToken ? ( watchLaterVideos.find((item) => item._id === _id) ? ( <WatchLaterFill /> ) : ( <WatchLater />) ) : ( <WatchLater/>)}
+                    </button>
                   </div>
                 </div>
               );
