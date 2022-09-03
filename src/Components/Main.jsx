@@ -10,6 +10,7 @@ import {
 import { useVideo } from "../Context/VideoContext";
 import { useLike } from "../Context/LikeContext";
 import { useWatchLater } from "../Context/WatchlaterContext";
+import { usePLaylist } from "../Context/PlaylistContext";
 
 const Main = () => {
   const { playerHandler, videoList } = useVideo();
@@ -19,6 +20,10 @@ const Main = () => {
   const {  watchLaterVideos ,watchLaterToggler } = useWatchLater()
 
   const userFromLocal = localStorage.getItem("user")
+
+  const  {createPlaylist, setPlaylist, setPlaylistTitle, playlist, playlistTitle, deletePlaylist} = usePLaylist()
+
+  // console.log(playlist._id)
 
   return (
     <div className="container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44">
@@ -41,7 +46,8 @@ const Main = () => {
                 <button onClick={() => likeToggler(_id)}>
                   { userFromLocal ? ( likeVid.find((item) => item._id === _id) ? ( <LikeFill /> ) : ( <LikeIcon />) ) : ( <LikeIcon/>)}
                 </button>
-                <button>
+                <input type="text" onChange={e => setPlaylistTitle(e.target.value)} />
+                <button onClick={() => createPlaylist(playlistTitle)}>
                   <PlaylistIcon />
                 </button>
                 <button onClick={() => watchLaterToggler(_id)}>
