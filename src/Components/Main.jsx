@@ -19,7 +19,7 @@ const Main = () => {
 
   const {  watchLaterVideos ,watchLaterToggler } = useWatchLater()
 
-  const { addToHistory, removeFromHistory, removeAllHistory } = useHistory()
+  const { addToHistory} = useHistory()
  
   const userFromLocal = localStorage.getItem("user")
 
@@ -50,8 +50,6 @@ const Main = () => {
                 <button onClick={() => watchLaterToggler(_id)}>
                   { userFromLocal ? ( watchLaterVideos.find((item) => item._id === _id) ? ( <WatchLaterFill /> ) : ( <WatchLater />) ) : ( <WatchLater/>)}
                 </button>
-                <button onClick={() => removeFromHistory(_id)}>remve</button>
-                <button onClick={removeAllHistory}>hato sb</button>
               </div>
             </div>
           );

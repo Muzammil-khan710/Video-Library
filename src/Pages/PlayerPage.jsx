@@ -13,6 +13,7 @@ const PlayerPage = () => {
   const { playerArr, playerHandler} = useVideo();
   const {  watchLaterVideos, watchLaterToggler } = useWatchLater()
   const encodedToken = localStorage.getItem("token")
+  const userFromLocal = localStorage.getItem("user")
 
   return (
     <div>
@@ -20,7 +21,7 @@ const PlayerPage = () => {
       <div className="flex flex-wrap">
         <Sidebar />
 
-        <div className="mt-[9rem] ml-[5rem] sm:ml-[12rem] bg-slate-400 h-[43rem] w-[53rem] rounded">
+        <div className="mt-[9rem] ml-[5rem] sm:ml-[12rem] bg-slate-400 h-[43rem] w-[53rem] rounded" key={videoid}>
           <iframe
             width="850"
             height="498"
@@ -60,7 +61,7 @@ const PlayerPage = () => {
         <div className="">
           <div className="ml-[4rem] mt-[9rem] ">
             {videos.map(
-              ({ _id, title, image, description, views, date, creator }) => {
+              ({ _id, title, image, views, date, creator }) => {
                 return (
                   <div
                     className="border p-5 m-3 bg-slate-400 rounded-md w-72"
@@ -82,15 +83,15 @@ const PlayerPage = () => {
                       </div>
                     </Link>
                     <div className="flex justify-around mt-2">
-                      <button>
-                        <LikeIcon />
-                      </button>
-                      <button>
-                        <PlaylistIcon />
-                      </button>
-                      <button>
-                        <WatchLater />
-                      </button>
+                    <button onClick={() => likeToggler(_id)}>
+                      { userFromLocal ? ( likeVid.find((item) => item._id === _id) ? ( <LikeFill /> ) : ( <LikeIcon />) ) : ( <LikeIcon/>)}
+                    </button>
+                    <button>
+                    <PlaylistIcon />
+                    </button>
+                    <button onClick={() => watchLaterToggler(_id)}>
+                      { userFromLocal ? ( watchLaterVideos.find((item) => item._id === _id) ? ( <WatchLaterFill /> ) : ( <WatchLater />) ) : ( <WatchLater/>)}
+                    </button>
                     </div>
                   </div>
                 );
