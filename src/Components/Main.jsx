@@ -10,6 +10,7 @@ import {
 import { useVideo } from "../Context/VideoContext";
 import { useLike } from "../Context/LikeContext";
 import { useWatchLater } from "../Context/WatchlaterContext";
+import { useHistory } from "../Context/HistoryContext";
 
 const Main = () => {
   const { playerHandler, videoList } = useVideo();
@@ -18,6 +19,8 @@ const Main = () => {
 
   const {  watchLaterVideos ,watchLaterToggler } = useWatchLater()
 
+  const { addToHistory, removeFromHistory, removeAllHistory } = useHistory()
+ 
   const userFromLocal = localStorage.getItem("user")
 
   return (
@@ -29,7 +32,7 @@ const Main = () => {
               className="border p-5 m-3 bg-slate-400 rounded-md w-72"
               key={_id}
             >
-              <Link to={`/player/${_id}`} onClick={() => playerHandler(_id)}>
+              <Link to={`/player/${_id}`} onClick={() => { playerHandler(_id) ; addToHistory(_id) }}>
                 <img className="h-40 w-full rounded-md" src={image} alt="" />
                 <div className="text-2xl">{title}</div>
                 <div className="font-medium">{creator}</div>
@@ -47,6 +50,8 @@ const Main = () => {
                 <button onClick={() => watchLaterToggler(_id)}>
                   { userFromLocal ? ( watchLaterVideos.find((item) => item._id === _id) ? ( <WatchLaterFill /> ) : ( <WatchLater />) ) : ( <WatchLater/>)}
                 </button>
+                <button onClick={() => removeFromHistory(_id)}>remve</button>
+                <button onClick={removeAllHistory}>hato sb</button>
               </div>
             </div>
           );
