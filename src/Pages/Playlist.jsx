@@ -10,16 +10,13 @@ import { LikeFill, LikeIcon, PlaylistIcon, WatchLater, WatchLaterFill } from "..
 
 const PlaylistPage = () => {
 
-  const { playlist, deletePlaylist,  playListVideo, playlistId,getPlaylistVideo, singlePlaylist, setSinglePLaylist  } = usePLaylist()
-  // console.log(singlePlaylist)
+  const { playlist, deletePlaylist, getPlaylistVideo, singlePlaylist } = usePLaylist()
 
   const { playerHandler } = useVideo();
 
   const { likeVid, likeToggler } = useLike();
 
   const { watchLaterToggler, watchLaterVideos  } = useWatchLater()
-
-  console.log(singlePlaylist)
 
   return (
     <div>
@@ -29,15 +26,15 @@ const PlaylistPage = () => {
     <div className='container  flex flex-col flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44'>
         <div className='text-white self-center '>Playlist page</div>
         <div className='flex gap-[2rem] justify-start'>
-        {playlist.map(({_id, videos, title }) => {
+        {playlist.map(({_id, title }) => {
           return(
           <div className=' bg-slate-400 px-[2rem] py-[1rem] flex gap-[2rem] rounded-lg justify-around ' key={_id}>
-            {/* <button>{title}</button> */}
-            <button onClick={() => getPlaylistVideo(_id) }>check</button>
+            <button onClick={() => getPlaylistVideo(_id) }>{title}</button>
             <button onClick={() => deletePlaylist(_id) }><PlaylistRemove/></button>
           </div>
         )})}
         </div>
+        <div className='flex'>
         {singlePlaylist?.videos?.map(({ title, date, views, creator, image, _id }) => {
             return (
               <div
@@ -71,6 +68,7 @@ const PlaylistPage = () => {
             );
                     
           })}
+        </div>
     </div>
     </div>
 </div>

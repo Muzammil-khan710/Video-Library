@@ -26,18 +26,12 @@ const Main = () => {
 
   const {
     createPlaylist,
-    setPlaylist,
     setPlaylistTitle,
     playlist,
     playlistTitle,
-    deletePlaylist,
     addVideoToPlaylist,
     removeVideoFromPlaylist,
   } = usePLaylist();
-
-  // console.log(playlist)
-  // console.log(playlist._id)
-  // console.log(playlist.title)
 
   return (
     <div className="container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44 ">
