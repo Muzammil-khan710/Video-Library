@@ -40,7 +40,6 @@ const PlaylistPage = () => {
         singlePlaylist?.videos?.length === 0 ? <div className='text-white'>Please add videos in playlist</div> :
         
         singlePlaylist?.videos?.map(({ title, date, views, creator, image, _id }) => {
-          console.log('from single',singlePlaylist)
             return (
               <div
                 className="border p-5 m-3 bg-slate-400 rounded-md w-72"
