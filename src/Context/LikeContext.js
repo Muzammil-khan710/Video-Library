@@ -49,15 +49,11 @@ const LikeProvider = ({children}) => {
             const vid = videoList.find((vidfind) => vidfind._id === _id);
             const  response = await axios.post("/api/user/likes", { video :  vid}, config )
             setLikeVid(response.data.likes)
-            console.log(response)
 
         } catch (error) {
             console.log({error})
         }
     }
-
-    console.log('likes one', user)
-
 
     const dislikeVideo = async (_id) => {
         const encodedToken = localStorage.getItem("token")
