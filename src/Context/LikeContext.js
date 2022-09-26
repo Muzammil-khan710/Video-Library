@@ -47,8 +47,8 @@ const LikeProvider = ({children}) => {
        
         try {
             const vid = videoList.find((vidfind) => vidfind._id === _id);
-            const  response = await axios.post("/api/user/likes", { video :  vid}, config )
-            setLikeVid(response.data.likes)
+            const  { data } = await axios.post("/api/user/likes", { video :  vid}, config )
+            setLikeVid(data.likes)
 
         } catch (error) {
             console.log({error})

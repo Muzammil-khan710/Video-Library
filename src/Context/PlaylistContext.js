@@ -57,7 +57,6 @@ const PlaylistProvider = ({children}) => {
     }
    
     const getPlaylistVideo = async (playlistId) => {
-        console.log(playlistId)
         setPlaylistId(playlistId)
         const encodedToken = localStorage.getItem("token")
         const config = {
