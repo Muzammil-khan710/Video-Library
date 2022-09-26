@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom'
 import { useVideo } from '../Context/VideoContext'
 import { useLike } from '../Context/LikeContext'
 import { useWatchLater } from '../Context/WatchlaterContext'
-import { LikeFill, LikeIcon, PlaylistIcon, WatchLater, WatchLaterFill } from "../Assets/AllSvg";
+import { LikeFill, LikeIcon, WatchLater, WatchLaterFill } from "../Assets/AllSvg";
 
 const PlaylistPage = () => {
 
-  const { playlist, deletePlaylist, getPlaylistVideo, singlePlaylist } = usePLaylist()
+  const { playlist, deletePlaylist, getPlaylistVideo, singlePlaylist, removeVideoFromPlaylist, playlistId } = usePLaylist()
 
   const { playerHandler } = useVideo();
 
@@ -35,7 +35,12 @@ const PlaylistPage = () => {
         )})}
         </div>
         <div className='flex'>
-        {singlePlaylist?.videos?.map(({ title, date, views, creator, image, _id }) => {
+        { 
+         
+        singlePlaylist?.videos?.length === 0 ? <div className='text-white'>Please add videos in playlist</div> :
+        
+        singlePlaylist?.videos?.map(({ title, date, views, creator, image, _id }) => {
+          console.log('from single',singlePlaylist)
             return (
               <div
                 className="border p-5 m-3 bg-slate-400 rounded-md w-72"
@@ -57,8 +62,8 @@ const PlaylistPage = () => {
                       <LikeIcon />
                     )}
                   </button>
-                  <button>
-                    <PlaylistIcon />
+                  <button onClick={() =>  removeVideoFromPlaylist(_id, playlistId)}>
+                    <PlaylistRemove />
                   </button>
                   <button onClick={() => watchLaterToggler(_id)}>
                   {watchLaterVideos.find((item) => item._id === _id) ? ( <WatchLaterFill /> ) : ( <WatchLater />) }

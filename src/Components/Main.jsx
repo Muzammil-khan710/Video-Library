@@ -11,7 +11,6 @@ import { useVideo } from "../Context/VideoContext";
 import { useLike } from "../Context/LikeContext";
 import { useWatchLater } from "../Context/WatchlaterContext";
 import { usePLaylist } from "../Context/PlaylistContext";
-// import { PlaylistModal } from "./PlaylistModal";
 
 const Main = () => {
   const { playerHandler, videoList } = useVideo();
@@ -22,19 +21,10 @@ const Main = () => {
 
   const userFromLocal = localStorage.getItem("user");
 
-  // const { playlistModalState, setPlaylistModalState } = playlistModal()
-
-  const {
-    createPlaylist,
-    setPlaylistTitle,
-    playlist,
-    playlistTitle,
-    addVideoToPlaylist,
-    removeVideoFromPlaylist,
-  } = usePLaylist();
+  const {  setOpenModal, setCurrentModalId } = usePLaylist()
 
   return (
-    <div className="container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44 ">
+    <div className="container  flex flex-wrap  p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44">
       {videoList.map(({ _id, title, image, views, date, creator }) => {
         return (
           <div
@@ -61,50 +51,10 @@ const Main = () => {
                   <LikeIcon />
                 )}
               </button>
-              {/* <input type="text" onChange={e => setPlaylistTitle(e.target.value)} /> */}
-              {/* <button onClick={() => createPlaylist(playlistTitle)}> */}
-              <button>
+              <button onClick={() => { setOpenModal("block") ; setCurrentModalId(_id); }}>
                 <PlaylistIcon />
-              </button>
-              <div className="absolute bg-slate-800 p-[2rem] mx-auto flex flex-col gap-[1rem]  border-sky-500">
-                <div>
-                  <input
-                    type="text"
-                    className="w-[10rem] rounded-md outline-none pl-2"
-                    onChange={(e) => setPlaylistTitle(e.target.value)}
-                  />
-                  <button
-                    className="text-white  pl-4"
-                    onClick={() => createPlaylist(playlistTitle)}
-                  >
-                    Create
-                  </button>
-                </div>
-                <div className="text-white">
-                  Playlist :{" "}
-                  {playlist.map((item) => {
-                    return (
-                      <div className="flex gap-[1rem]" key={item._id}>
-                        {" "}
-                        <button
-                          onClick={() => addVideoToPlaylist(_id, item._id)}
-                          className=""
-                        >
-                          {item.title}
-                        </button>{" "}
-                        <button 
-                        className="text-white"
-                          onClick={() => removeVideoFromPlaylist(_id, item._id)}
-                        >
-                          remove me
-                        </button>{" "}
-                      </div>
-                      
-                    );
-                  })}{" "}
-                </div>
-              </div>
-              {/* <button onClick={() => addVideoToPlaylist(_id)}> add vid to playlist</button> */}
+              </button> 
+             
               <button onClick={() => watchLaterToggler(_id)}>
                 {userFromLocal ? (
                   watchLaterVideos.find((item) => item._id === _id) ? (

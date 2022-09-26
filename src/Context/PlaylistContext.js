@@ -13,8 +13,11 @@ const PlaylistProvider = ({children}) => {
     const [playlist, setPlaylist] = useState([])
     const [playlistTitle, setPlaylistTitle] = useState("")  
     const [playListVideo, setPlayListVideo] = useState([]);
-    // const [playlistId, setPlaylistId] = useState("")
+    const [playlistId, setPlaylistId] = useState("")
     const [singlePlaylist, setSinglePLaylist] = useState([])
+
+    const [openModal, setOpenModal] = useState("none")
+    const [currentModalId, setCurrentModalId]= useState(null)
 
     const createPlaylist = async (pTitle) => {
         const encodedToken = localStorage.getItem("token")
@@ -26,8 +29,6 @@ const PlaylistProvider = ({children}) => {
 
         try {
             const { data } = await axios.post("/api/user/playlists", { playlist : { title : pTitle } }, config)
-
-            // console.log('from create playlist' ,data)
             setPlaylist(data.playlists)
             setPlaylistTitle(data.playlist.title)
             setPlaylistTitle("")
@@ -57,6 +58,7 @@ const PlaylistProvider = ({children}) => {
    
     const getPlaylistVideo = async (playlistId) => {
         console.log(playlistId)
+        setPlaylistId(playlistId)
         const encodedToken = localStorage.getItem("token")
         const config = {
             headers : {
@@ -80,7 +82,6 @@ const PlaylistProvider = ({children}) => {
                 authorization : encodedToken
             }
         }
-
         try {
             const someVid = videoList.find((item) => item._id === _id)
             const {data} = await axios.post(`/api/user/playlists/${playlistId}`, { video : someVid}, config)
@@ -110,7 +111,7 @@ const PlaylistProvider = ({children}) => {
     }
 
     return(
-        <PlaylistContext.Provider value={{createPlaylist, setPlaylist, setPlaylistTitle, playlist, playlistTitle, deletePlaylist, getPlaylistVideo, addVideoToPlaylist, removeVideoFromPlaylist, playListVideo, singlePlaylist, setSinglePLaylist }}>
+        <PlaylistContext.Provider value={{createPlaylist, setPlaylist, setPlaylistTitle, playlist, playlistTitle, deletePlaylist, getPlaylistVideo, addVideoToPlaylist, removeVideoFromPlaylist, playListVideo, singlePlaylist, setSinglePLaylist, openModal, setOpenModal, currentModalId, setCurrentModalId, playlistId }}>
             {children}
         </PlaylistContext.Provider>
     )
