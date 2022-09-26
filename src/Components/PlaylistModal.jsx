@@ -13,8 +13,6 @@
 
     const { openModal, setOpenModal } = usePLaylist()
 
-    console.log('pt', playlistTitle)
-
    return (
      <div className='fixed top-[15rem] left-[40%] right-auto w-[20rem]' style={{display :openModal }}>
         <div className="bg-slate-800 p-[2rem] flex flex-col gap-[1rem]  border-sky-500">
