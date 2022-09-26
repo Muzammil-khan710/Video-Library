@@ -30,7 +30,7 @@ const PlaylistProvider = ({children}) => {
         try {
             const { data } = await axios.post("/api/user/playlists", { playlist : { title : pTitle } }, config)
             setPlaylist(data.playlists)
-            setPlaylistTitle(data.playlist.title)
+            setPlaylistTitle(data.playlists.title)
             setPlaylistTitle("")
 
         } catch (error) {
