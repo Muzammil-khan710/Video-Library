@@ -5,7 +5,7 @@ import { WatchLater } from './../Assets/AllSvg';
 
 const Sidebar = () => {
   return (
-    <div className='container w-fit px-5 h-screen bg-slate-900 mt-4 fixed top-[5.2rem] lg:w-50 text-white'>
+    <div className='container w-fit px-5 h-screen bg-slate-900 mt-[-4px] sm:mt-4 fixed top-[5.2rem] lg:w-50 text-white'>
         <Link to="/" className='flex items-center my-5'><Home/><span className='hidden sm:block px-2'>Home</span></Link>
         <Link to="/history" className='flex items-center my-5'><HistoryIcon/> <span className='hidden sm:block  px-2'>History</span></Link>
         <Link to="/playlist" className='flex items-center my-5'><PlaylistIcon/> <span className='hidden sm:block  px-2'>Playlist</span></Link>

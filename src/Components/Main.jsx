@@ -27,7 +27,7 @@ const Main = () => {
   const {  setOpenModal, setCurrentModalId } = usePLaylist()
 
   return (
-    <div className="container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44">
+    <div className="container  flex flex-wrap gap-4 p-2 mt-[6rem] ml-[4rem] sm:ml-40 md:ml-44">
       {videoList.map(({ _id, title, image, views, date, creator }) => {
         return (
           <div
