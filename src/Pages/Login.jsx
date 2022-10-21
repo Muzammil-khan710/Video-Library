@@ -15,7 +15,7 @@ const LoginPage = () => {
         <Header/>
         <div className='flex'>
             <Sidebar/>
-            <div className='container flex flex-col bg-white h-[22rem] w-[20rem] mt-[12rem] mx-auto rounded'  >
+            <div className='container flex flex-col bg-white h-[22rem] w-[17rem] ml-[6rem] sm:w-[20rem] mt-[12rem] sm:mx-auto rounded'  >
                 <div className='text-center m-3 text-2xl'>Login</div>
                 <form action="" className='flex flex-col'>
                     <label htmlFor="" className='px-4'>Email</label>
