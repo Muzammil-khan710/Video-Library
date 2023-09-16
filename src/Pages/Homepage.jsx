@@ -7,14 +7,14 @@ const Homepage = () => {
   const { currentModalId } = usePLaylist()
 
   return (
-    <div className=''>
+    <>
         <Header/>
         <div className='flex'>
             <Sidebar/>
             <Main/>
             <PlaylistModal className='' videoId={currentModalId}/>
         </div>
-    </div>
+    </>
   )
 }
 

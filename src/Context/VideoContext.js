@@ -5,14 +5,14 @@ const VideoContext = createContext()
 
 const useVideo = () => useContext(VideoContext)
 
+export const useSingleVideo = (videoId) => {
+  const { videoList } = useVideo();
+  return videoList.find((item) => item._id === videoId);
+};
+
 const VideoProvider = ({children}) => {
 
   const [ playerArr, setPlayerArr] = useState([])
-
-  const playerHandler = (_id) => {
-    const obj = videoList.find((video) => video._id === _id);
-    setPlayerArr([obj])
-  }
 
   const [ videoList, setVideoList ] = useState([]);
 
@@ -24,7 +24,7 @@ const VideoProvider = ({children}) => {
 }, [])
 
     return(
-        <VideoContext.Provider value={{playerArr, setPlayerArr, playerHandler, videoList }}>
+        <VideoContext.Provider value={{playerArr, setPlayerArr,  videoList }}>
             {children}
         </VideoContext.Provider>
     )

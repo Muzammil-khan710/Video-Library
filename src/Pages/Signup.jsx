@@ -15,7 +15,7 @@ const SignupPage = () => {
   })
 
   return (
-    <div>
+    <>
         <Header/>
         <div className='flex'>
             <Sidebar/>
@@ -39,7 +39,7 @@ const SignupPage = () => {
                 <div className='text-center mt-2'>Already a user? <Link className='underline' to="/login">login</Link> </div>
             </div>
         </div>
-    </div>
+    </>
   )
 }
 
