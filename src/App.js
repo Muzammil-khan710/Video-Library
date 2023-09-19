@@ -1,43 +1,29 @@
-import "./App.css";
-import logo from "./logo.png";
+import { Homepage, LoginPage, SignupPage, HistoryPage, LikedPage, WatchLaterPage, PlaylistPage, PlayerPage } from "./Pages/index";
+import { Routes, Route } from  "react-router-dom"
+import { Authroute } from './Components/Authroute';
+import { Privateroute } from './Components/Privateroute';
 
-function App() {
+const App = () =>  {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
-    </div>
+    <>
+    <Routes>
+      <Route path="/" element={<Homepage/>}/>
+
+      <Route element={<Authroute/>}>
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/signup" element={<SignupPage/>}/>
+      </Route>
+
+      <Route element={<Privateroute/>}>
+      <Route path="/history" element={<HistoryPage/>}/>
+      <Route path="/liked" element={<LikedPage/>}/>
+      <Route path="/watchlater" element={<WatchLaterPage/>}/>
+      <Route path="/playlist" element={<PlaylistPage/>}/>
+      </Route>
+      <Route path="/player/:videoid" element={<PlayerPage/>}/>
+    </Routes>
+    </>
   );
 }
 
-export default App;
+export { App }
