@@ -1,15 +1,20 @@
 import React from 'react'
-import { Header, Main, Sidebar } from "../Components/index"
+import { Header, Main, PlaylistModal, Sidebar } from "../Components/index"
+import { usePLaylist } from '../Context/PlaylistContext'
 
 const Homepage = () => {
+
+  const { currentModalId } = usePLaylist()
+
   return (
-    <div>
+    <>
         <Header/>
         <div className='flex'>
             <Sidebar/>
             <Main/>
+            <PlaylistModal className='' videoId={currentModalId}/>
         </div>
-    </div>
+    </>
   )
 }
 

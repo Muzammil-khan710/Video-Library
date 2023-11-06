@@ -11,11 +11,11 @@ const LoginPage = () => {
     const [password, setPassword]  = useState("")
 
   return (
-    <div>
+    <>
         <Header/>
         <div className='flex'>
             <Sidebar/>
-            <div className='container flex flex-col bg-white h-[22rem] w-[20rem] mt-[12rem] mx-auto rounded'  >
+            <section className='container flex flex-col bg-white h-[22rem] w-[17rem] ml-[6rem] sm:w-[20rem] mt-[12rem] sm:mx-auto rounded'  >
                 <div className='text-center m-3 text-2xl'>Login</div>
                 <form action="" className='flex flex-col'>
                     <label htmlFor="" className='px-4'>Email</label>
@@ -29,9 +29,9 @@ const LoginPage = () => {
                 </form>
                 <button  onClick={() => {setEmail("testuser@gmail.com"); setPassword("testuser@123")}} className='mt-3 bg-[#334756]  hover:bg-slate-500 self-center px-3 py-2 text-white rounded'>Use Test Credentials</button>
                 <div className='text-center mt-2'>New here? <Link className='underline' to="/signup">sign up</Link> </div>
-            </div>
+            </section>
         </div>
-    </div>
+    </>
   )
 }
 
