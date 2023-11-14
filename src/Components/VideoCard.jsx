@@ -70,4 +70,4 @@ const VideoCard = ({ data }) => {
   );
 };
 
-export default VideoCard;
+export { VideoCard }

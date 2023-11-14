@@ -1,6 +1,6 @@
 import React from "react";
 import { useVideo } from "../Context/VideoContext";
-import VideoCard from "./VideoCard";
+import { VideoCard } from "./VideoCard";
 
 const VideoListing = () => {
   const { videoList } = useVideo();
