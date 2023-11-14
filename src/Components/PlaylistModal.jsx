@@ -17,7 +17,7 @@ const PlaylistModal = ({ videoId }) => {
       className="fixed top-[15rem] left-[40%] right-auto w-[20rem] z-20"
       style={{ display: openModal }}
     >
-      <div className="bg-slate-800 p-[2rem] flex flex-col gap-[1rem]  border-sky-500">
+      <div className="bg-slate-800 p-[2rem] flex flex-col gap-4  border-sky-500">
         <button
           className="self-end text-white absolute top-1 bg-slate-700 right-1 px-2 rounded-md"
           onClick={() => setOpenModal("none")}
@@ -42,7 +42,7 @@ const PlaylistModal = ({ videoId }) => {
           Playlist :{" "}
           {playlist.map((item) => {
             return (
-              <div className="flex gap-[1rem] " key={item._id}>
+              <div className="flex gap-4 " key={item._id}>
                 {" "}
                 <button
                   onClick={() => { addVideoToPlaylist(videoId, item._id); setOpenModal("none") }}

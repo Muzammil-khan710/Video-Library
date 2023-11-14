@@ -25,7 +25,7 @@ const HistoryPage = () => {
         {historyVideo.length > 0 ?
         <section className="container  flex  flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44">
           <div className="container flex mt-3 mx-auto ">
-          <button className="p-[1rem] mx-auto bg-[#334756]  hover:bg-slate-500 active:bg-slate-400' rounded-md text-white" onClick={removeAllHistory}>Clear History</button>
+          <button className="p-4 mx-auto bg-[#334756]  hover:bg-slate-500 active:bg-slate-400' rounded-md text-white" onClick={removeAllHistory}>Clear History</button>
           </div>
           {historyVideo.map(({ title, date, views, creator, image, _id }) => {
             return (
