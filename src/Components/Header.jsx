@@ -18,7 +18,7 @@ const Header = () => {
       <NavLink to={'/'} className="italic text-3xl sm:text-6xl">MTunes</NavLink>
       <div className="flex justify-between items-center gap-2">
         <UserProfile />
-        <div>{user ? `Hello! ${user.firstName}` : ""}</div>
+        <span>{user && `Hello, ${user.firstName}`}</span>
         {!user ? (
           <Link
             to="/login"

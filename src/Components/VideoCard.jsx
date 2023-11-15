@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "../Context/HistoryContext";
 import { FunctionalBtns } from "./FunctionalBtns";
 
-const VideoCard = ({ data }) => {
+const VideoCard = ({ data, history }) => {
   const { addToHistory } = useHistory();
   return (
     <div className="border p-5 m-3 bg-slate-400 rounded-md w-72 static">
@@ -24,7 +24,7 @@ const VideoCard = ({ data }) => {
           <span>{data.views} views</span> <span>{data.date}</span>{" "}
         </div>
       </Link>
-      <FunctionalBtns IsVideo={data} className={"flex justify-between mt-2"} />
+      <FunctionalBtns IsVideo={data} className={"flex justify-between mt-2"} history={history}/>
     </div>
   );
 };

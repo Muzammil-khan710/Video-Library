@@ -32,7 +32,7 @@ const PlaylistPage = () => {
       <div className="flex">
         <Sidebar />
         {playlist.length > 0 ? (
-          <div className="container  flex flex-col flex-wrap gap-4 p-2 mt-[6rem] ml-28 sm:ml-40 md:ml-44">
+          <div className="container  flex flex-col flex-wrap gap-4 p-2 mt-24 ml-28 sm:ml-40 md:ml-44">
             <div className="flex gap-[2rem] justify-start">
               {playlist.map(({ _id, title }) => {
                 return (

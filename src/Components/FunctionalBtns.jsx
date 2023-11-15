@@ -5,16 +5,19 @@ import {
   PlaylistIcon,
   WatchLater,
   WatchLaterFill,
+  DeleteIcon
 } from "../Assets/AllSvg";
 import { useLike } from "../Context/LikeContext";
 import { useWatchLater } from "../Context/WatchlaterContext";
 import { usePLaylist } from "../Context/PlaylistContext";
+import { useHistory } from "../Context/HistoryContext";
 
-const FunctionalBtns = ({ IsVideo, className }) => {
+const FunctionalBtns = ({ IsVideo, className, history=false }) => {
   const { likeToggler, likeVid } = useLike();
   const { watchLaterVideos, watchLaterToggler } = useWatchLater();
   const encodedToken = localStorage.getItem("token");
   const { setOpenModal, setCurrentModalId } = usePLaylist();
+  const { removeFromHistory } = useHistory()
 
   return (
     <div className={className}>
@@ -48,6 +51,7 @@ const FunctionalBtns = ({ IsVideo, className }) => {
           <WatchLater />
         )}
       </button>
+      {history && <button onClick={() => removeFromHistory(IsVideo._id)}><DeleteIcon/></button> }
     </div>
   );
 };

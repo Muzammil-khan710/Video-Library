@@ -1,8 +1,8 @@
 import { Homepage } from "./Homepage";
-import { LoginPage } from "./Login";
-import { SignupPage } from "./Signup";
-import { HistoryPage } from "./History";
-import { LikedPage } from "./Liked";
+import { LoginPage } from "./LoginPage";
+import { SignupPage } from "./SignupPage";
+import { HistoryPage } from "./HistoryPage";
+import { LikedPage } from "./LikedPage";
 import { WatchLaterPage } from "./WatchLater";
 import { PlaylistPage } from "./Playlist";
 import { PlayerPage } from "./PlayerPage";

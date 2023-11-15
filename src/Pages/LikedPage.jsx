@@ -1,18 +1,19 @@
 import React from "react";
-import { Header, PlaylistModal, Sidebar, WatchLaterVideos } from "../Components";
+import { Header, PlaylistModal, Sidebar } from "../Components";
 import { usePLaylist } from "../Context/PlaylistContext";
+import { LikedVideos } from "../Components/LikedVideos";
 
-const WatchLaterPage = () => {
+const LikedPage = () => {
   const { currentModalId } = usePLaylist();
 
   return (
     <>
       <Header />
       <Sidebar />
-      <WatchLaterVideos />
+      <LikedVideos/>
       <PlaylistModal videoId={currentModalId} />
     </>
   );
 };
 
-export { WatchLaterPage };
+export { LikedPage };
