@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { usePLaylist } from "../Context/PlaylistContext";
 import { DeleteIcon } from "../Assets/AllSvg";
 import { VideoCard } from "./VideoCard";
+import { useLocation } from "react-router-dom";
 
 const PlaylistBox = () => {
   const {
@@ -12,20 +13,28 @@ const PlaylistBox = () => {
     playlistId,
   } = usePLaylist();
 
+  const location = useLocation();
+
+  const [hidePlaylist, setHidePlaylist] = useState(false);
+
+  useEffect(() => {
+    setHidePlaylist(false);
+  }, [location]);
+
   return (
     <React.Fragment>
       {playlist.length > 0 ? (
-        <section className="flex flex-col flex-wrap gap-4 p-2 mt-24 ml-28 sm:ml-40 md:ml-44">
+        <section className="flex flex-col  gap-4 p-2 mt-24 ml-28 sm:ml-40 md:ml-44">
           <div className="flex gap-8 justify-start">
             {playlist.map(({ _id, title }) => {
               return (
                 <div
-                  className=" bg-slate-400 px-8 py-4 flex gap-8 rounded-lg justify-around m-3"
+                  className={` bg-slate-400 px-8 py-4 flex gap-8 rounded-lg justify-around m-3 `}
                   key={_id}
                 >
                   <button
                     className="text-xl"
-                    onClick={() => getPlaylistVideo(_id)}
+                    onClick={() => { getPlaylistVideo(_id); setHidePlaylist(true) }}
                   >
                     {title}
                   </button>
@@ -36,20 +45,23 @@ const PlaylistBox = () => {
               );
             })}
           </div>
-          {singlePlaylist?.videos?.length === 0 ? (
-            <div className="text-white">Please add videos in playlist</div>
-          ) : (
-            singlePlaylist?.videos?.map((data) => {
-              return (
-                <VideoCard
-                  data={data}
-                  key={data._id}
-                  playlist={true}
-                  playlistId={playlistId}
-                />
-              );
-            })
-          )}
+          {hidePlaylist &&
+            (singlePlaylist?.videos?.length === 0 ? (
+              <div className="text-white mx-3">
+                Please add videos in the playlist
+              </div>
+            ) : (
+              <div className="flex flex-wrap gap-4 p-2 justify-around md:justify-start">
+                {singlePlaylist?.videos?.map((data) => (
+                  <VideoCard
+                    data={data}
+                    key={data._id}
+                    playlist={true}
+                    playlistId={playlistId}
+                  />
+                ))}
+              </div>
+            ))}
         </section>
       ) : (
         <h1 className="flex items-center justify-center w-full h-[100vh] text-white text-2xl">
