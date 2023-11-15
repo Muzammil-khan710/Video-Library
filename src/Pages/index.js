@@ -4,7 +4,7 @@ import { SignupPage } from "./SignupPage";
 import { HistoryPage } from "./HistoryPage";
 import { LikedPage } from "./LikedPage";
 import { WatchLaterPage } from "./WatchLater";
-import { PlaylistPage } from "./Playlist";
+import { PlaylistPage } from "./PlaylistPage";
 import { PlayerPage } from "./PlayerPage";
 
 export { Homepage, LoginPage, SignupPage, HistoryPage, LikedPage, WatchLaterPage, PlaylistPage, PlayerPage }

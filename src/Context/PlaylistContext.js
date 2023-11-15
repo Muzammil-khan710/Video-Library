@@ -102,7 +102,7 @@ const PlaylistProvider = ({children}) => {
         try {
             const { data  } = await axios.delete(`/api/user/playlists/${playlistId}/${_id}`, config)
             
-            setPlayListVideo(data.playlist)
+            setSinglePLaylist(data.playlist)
             
         } catch (error) {
             console.log({error})
