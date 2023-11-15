@@ -17,8 +17,6 @@ const LikeProvider = ({children}) => {
  
     const { videoList  } = useVideo()
 
-    const userFromLocal = localStorage.getItem("user")
-
     useEffect(() => {
         if(user) {
             setLikeVid(user.likes)
@@ -30,7 +28,7 @@ const LikeProvider = ({children}) => {
     const navigate = useNavigate()
 
     const likeToggler = (_id) => {
-        (userFromLocal) ? (
+        (user) ? (
         likeVid.find((item) => item._id === _id)
         ?  dislikeVideo(_id)  
         :  likeVideo(_id) 

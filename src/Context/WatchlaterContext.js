@@ -19,8 +19,6 @@ const WatchLaterProvider = ({children}) => {
 
     const { user } = useAuth()
 
-    const userFromLocal = localStorage.getItem("user")
-
     useEffect(() => {
         if(user) {
             setWatchLaterVideos(user.watchlater)
@@ -32,7 +30,7 @@ const WatchLaterProvider = ({children}) => {
     const navigate = useNavigate()
 
     const watchLaterToggler = (_id) => {
-        (userFromLocal) ? (
+        (user) ? (
         watchLaterVideos.find((item) => item._id === _id)
         ?  removeFromWatchLater(_id)  
         :  addToWatchLater(_id) 
