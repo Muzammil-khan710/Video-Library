@@ -1,6 +1,7 @@
 import { createContext, useContext, useState  } from 'react';
 import  axios  from 'axios';
 import { useVideo } from './VideoContext';
+import toast from 'react-hot-toast';
 
 const HistoryContext = createContext()
 
@@ -41,12 +42,14 @@ const HistoryProvider = ({children}) => {
         try {
             const { data } = await axios.delete(`/api/user/history/${_id}`,  config)
             setHistoryVideo(data.history)
-
+            toast.success('Removed video from history')
+            
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable to remove video from history at the moment')
         }
     }
-
+    
     const removeAllHistory = async () => {
         const encodedToken = localStorage.getItem("token")
         const config  = {
@@ -58,8 +61,10 @@ const HistoryProvider = ({children}) => {
         try {
             const { data } = await axios.delete("/api/user/history/all", config)
             setHistoryVideo(data.history)
+            toast.success('History cleared successfully')
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable clear history at the moment')
         }
     }
 

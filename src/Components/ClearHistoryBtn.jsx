@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "../Context/HistoryContext";
 
 const ClearHistoryBtn = () => {
-    const { removeAllHistory } = useHistory();
+  const { removeAllHistory } = useHistory();
   return (
     <div className="mt-3 mx-auto w-full flex">
       <button

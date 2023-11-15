@@ -5,6 +5,7 @@ import  axios  from 'axios';
 import { useVideo } from './VideoContext';
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from './AuthContext';
+import toast from 'react-hot-toast';
 
 const WatchLaterContext = createContext()
 
@@ -50,8 +51,10 @@ const WatchLaterProvider = ({children}) => {
             const vid = videoList.find((vidfind) => vidfind._id === _id);
             const { data } = await axios.post("/api/user/watchlater", { video : vid }, config)
             setWatchLaterVideos(data.watchlater)
+            toast.success('Added to watch later')
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable to add video to watch later')
         }
     }
 
@@ -66,8 +69,10 @@ const WatchLaterProvider = ({children}) => {
         try {
             const { data } = await axios.delete(`/api/user/watchlater/${_id}`,  config)
             setWatchLaterVideos(data.watchlater)
+            toast.success('removed from watch later')
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable to remove video from watch later')
         }
     }
 

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import { useVideo } from './VideoContext';
+import toast from 'react-hot-toast';
 
 const PlaylistContext = createContext()
 
@@ -15,7 +16,6 @@ const PlaylistProvider = ({children}) => {
     const [playListVideo, setPlayListVideo] = useState([]);
     const [playlistId, setPlaylistId] = useState("")
     const [singlePlaylist, setSinglePLaylist] = useState([])
-
     const [openModal, setOpenModal] = useState("none")
     const [currentModalId, setCurrentModalId]= useState(null)
 
@@ -32,12 +32,13 @@ const PlaylistProvider = ({children}) => {
             setPlaylist(data.playlists)
             setPlaylistTitle(data.playlists.title)
             setPlaylistTitle("")
-
+            toast.success('Playlist created successfully')
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable to create playlist at the moment')
         }
     }
-
+    
     const deletePlaylist = async (playlistId) => {
         const encodedToken = localStorage.getItem("token")
         const config = {
@@ -50,9 +51,11 @@ const PlaylistProvider = ({children}) => {
             const { data } = await axios.delete(`/api/user/playlists/${playlistId}`, config)
  
             setPlaylist(data.playlists)
+            toast.success('Playlist deleted successfully')
 
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable to delete playlist at the moment')
         }
     }
    
@@ -85,9 +88,10 @@ const PlaylistProvider = ({children}) => {
             const someVid = videoList.find((item) => item._id === _id)
             const {data} = await axios.post(`/api/user/playlists/${playlistId}`, { video : someVid}, config)
             setPlayListVideo(data.playlist)
-        
+            toast.success('Video added to playlist successfully')
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable to add video to playlist')
         }
     }
 
@@ -101,11 +105,11 @@ const PlaylistProvider = ({children}) => {
 
         try {
             const { data  } = await axios.delete(`/api/user/playlists/${playlistId}/${_id}`, config)
-            
             setSinglePLaylist(data.playlist)
-            
+            toast.success('Video removed from playlist successfully')
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable to remove video from playlist')
         }
     }
 

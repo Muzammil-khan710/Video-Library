@@ -8,5 +8,7 @@ import { HistoryVideos } from "./HistoryVideos";
 import { WatchLaterVideos } from "./WatchLaterVideos";
 import { SharedVideoList } from "./SharedVideoList";
 import { PlaylistBox } from "./PlaylistBox";
+import { LoginContainer } from "./LoginContainer";
+import { SignupContainer } from "./SignupContainer";
 
-export { Header, VideoListing, Sidebar, PlaylistModal, VideoCard, VideoPlayer, HistoryVideos, WatchLaterVideos, SharedVideoList, PlaylistBox }
+export { Header, VideoListing, Sidebar, PlaylistModal, VideoCard, VideoPlayer, HistoryVideos, WatchLaterVideos, SharedVideoList, PlaylistBox, LoginContainer, SignupContainer }

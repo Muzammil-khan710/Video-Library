@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const AuthContext = createContext();
 
@@ -28,12 +29,14 @@ const AuthProvider = ({children}) => {
         setToken(data.encodedToken)
         localStorage.setItem("token", JSON.stringify(data.encodedToken))
         localStorage.setItem("user", JSON.stringify(data.foundUser))
+        toast.success('Login successful')
        } catch (error) {
-            console.log({error})
-       }
-
+           console.log({error})
+           toast.error('Error occured while logging in')
+        }
+        
     }
-
+    
     const signup = async (e, newuser) => {
         e.preventDefault()
 
@@ -43,8 +46,10 @@ const AuthProvider = ({children}) => {
             setToken(data.encodedToken)
             localStorage.setItem("token", JSON.stringify(data.encodedToken))
             localStorage.setItem("user", JSON.stringify(data.createdUser))    
+            toast.success('Login successful')
         } catch (error) {
             console.log({error})
+            toast.error('Error occured while logging in')
         }
     }
         
@@ -53,6 +58,7 @@ const AuthProvider = ({children}) => {
         localStorage.removeItem("token");
         setUser(null)
         setToken(null)
+        toast.success('Logout successful')
     }
 
     return(

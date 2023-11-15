@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useVideo } from './VideoContext';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import toast from 'react-hot-toast';
 
 const LikeContext = createContext()
 
@@ -49,9 +50,10 @@ const LikeProvider = ({children}) => {
             const vid = videoList.find((vidfind) => vidfind._id === _id);
             const  { data } = await axios.post("/api/user/likes", { video :  vid}, config )
             setLikeVid(data.likes)
-
+            toast.success('Added to liked videos')
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable to like video at the moment')
         }
     }
 
@@ -62,12 +64,14 @@ const LikeProvider = ({children}) => {
                 authorization : encodedToken
             }
         }
-
+        
         try {
             const { data } = await axios.delete(`/api/user/likes/${_id}`, config)
             setLikeVid(data.likes)
+            toast.success('Removed from liked videos')
         } catch (error) {
             console.log({error})
+            toast.error('Error: Unable to unlike video at the moment')
         }
     }
 

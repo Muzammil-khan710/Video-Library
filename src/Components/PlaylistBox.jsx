@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { usePLaylist } from "../Context/PlaylistContext";
-import { DeleteIcon } from "../Assets/AllSvg";
 import { VideoCard } from "./VideoCard";
 import { useLocation } from "react-router-dom";
+import { PlaylistTabs } from "./PlaylistTabs";
 
 const PlaylistBox = () => {
   const {
@@ -28,20 +28,14 @@ const PlaylistBox = () => {
           <div className="flex gap-8 justify-start">
             {playlist.map(({ _id, title }) => {
               return (
-                <div
-                  className={` bg-slate-400 px-8 py-4 flex gap-8 rounded-lg justify-around m-3 `}
+                <PlaylistTabs
+                  id={_id}
+                  title={title}
+                  deletePlaylist={deletePlaylist}
+                  getPlaylistVideo={getPlaylistVideo}
+                  setHidePlaylist={setHidePlaylist}
                   key={_id}
-                >
-                  <button
-                    className="text-xl"
-                    onClick={() => { getPlaylistVideo(_id); setHidePlaylist(true) }}
-                  >
-                    {title}
-                  </button>
-                  <button onClick={() => deletePlaylist(_id)}>
-                    <DeleteIcon />
-                  </button>
-                </div>
+                />
               );
             })}
           </div>
@@ -51,7 +45,7 @@ const PlaylistBox = () => {
                 Please add videos in the playlist
               </div>
             ) : (
-              <div className="flex flex-wrap gap-4 p-2 justify-around md:justify-start">
+              <div className="flex flex-wrap gap-4 justify-around md:justify-start">
                 {singlePlaylist?.videos?.map((data) => (
                   <VideoCard
                     data={data}
