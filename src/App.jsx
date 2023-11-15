@@ -3,6 +3,7 @@ import { Routes, Route } from  "react-router-dom"
 import { Authroute } from './Components/Authroute';
 import { Privateroute } from './Components/Privateroute';
 import Mockman from "mockman-js";
+import { Toaster } from "react-hot-toast";
 
 const App = () =>  {
   return (
@@ -23,6 +24,7 @@ const App = () =>  {
       </Route>
       <Route path="/player/:videoid" element={<PlayerPage/>}/>
     </Routes>
+    <Toaster/>
     </>
   );
 }

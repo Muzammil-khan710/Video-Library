@@ -1,6 +1,6 @@
 import React from "react";
 import { UserProfile } from "../Assets/AllSvg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 
 const Header = () => {
@@ -14,11 +14,11 @@ const Header = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between bg-gradient-to-r from-slate-900 to-slate-600 text-white p-5 fixed w-full float z-10">
-      <div className="italic text-3xl sm:text-6xl">MTunes</div>
+    <nav className="flex items-center justify-between bg-gradient-to-r from-slate-900 to-slate-600 text-white p-5 fixed w-full z-10 top-0">
+      <NavLink to={'/'} className="italic text-3xl sm:text-6xl">MTunes</NavLink>
       <div className="flex justify-between items-center gap-2">
         <UserProfile />
-        <div>{user ? `Hello! ${user.firstName}` : ""}</div>
+        <span>{user && `Hello, ${user.firstName}`}</span>
         {!user ? (
           <Link
             to="/login"

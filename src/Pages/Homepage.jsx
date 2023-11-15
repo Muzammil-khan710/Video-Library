@@ -1,21 +1,23 @@
-import React from 'react'
-import { Header, Main, PlaylistModal, Sidebar } from "../Components/index"
-import { usePLaylist } from '../Context/PlaylistContext'
+import React from "react";
+import {
+  Header,
+  PlaylistModal,
+  Sidebar,
+  VideoListing,
+} from "../Components/index";
+import { usePLaylist } from "../Context/PlaylistContext";
 
 const Homepage = () => {
-
-  const { currentModalId } = usePLaylist()
+  const { currentModalId } = usePLaylist();
 
   return (
     <>
-        <Header/>
-        <div className='flex'>
-            <Sidebar/>
-            <Main/>
-            <PlaylistModal className='' videoId={currentModalId}/>
-        </div>
+      <Header />
+      <Sidebar />
+      <VideoListing />
+      <PlaylistModal videoId={currentModalId} />
     </>
-  )
-}
+  );
+};
 
-export { Homepage }
+export { Homepage };
