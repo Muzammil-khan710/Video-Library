@@ -28,9 +28,13 @@ const VideoPlayer = () => {
       <div className="p-4">
         {IsVideo && (
           <>
-            <h1 className="text-2xl">{IsVideo.title}</h1>
-            <p>{IsVideo.description}</p>
+            <h1 className="text-2xl font-semibold">{IsVideo.title}</h1>
+            <p className="text-xl">{IsVideo.description}</p>
+            <h3 className="font-semibold">{IsVideo.creator}</h3>
+            <div className="flex justify-between font-semibold">
             <span>{IsVideo.views}</span>
+            <span>{IsVideo.date}</span>
+            </div>
             <FunctionalBtns
               IsVideo={IsVideo}
               className={"flex justify-left gap-[3rem] mt-2"}

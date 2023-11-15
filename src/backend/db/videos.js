@@ -3,7 +3,7 @@
  * You can add videos of your wish with different attributes
  * */
 
-import { afreen, agartumsathho, believer, faded, intheend, kunfayakun, lahore, ncs, nolove, signs, waalian } from "../../Assets/Images";
+import { afreen, afsanay, agartumsathho, believer, benz, callOutMyName, downersAtDusk, faded, intheend, kunfayakun, lahore, miAmor, ncs, nolove, signs, waalian } from "../../Assets/Images";
 
 export const videos = [
   {
@@ -125,5 +125,55 @@ export const videos = [
     category: "English",
     date: "4 Dec 2015",
     views : '3.3B',
-  }
+  },
+  {
+    _id:"_3TrUW-o2ns",
+    title:"Afsanay",
+    creator: "Talha Anjum | Talha Yunus",
+    description:"Produced By Jokhay , Written By Talha Anjum & Talhah Yunus, Copyright© | Young Stunners ;",
+    image:afsanay,
+    category: "Rap",
+    date: "26 Dec 2020",
+    views : '4.5M',
+  },
+  {
+    _id:"eBdR7Zi8u8w",
+    title:"Benz",
+    creator: "Talha Anjum | Talha Yunus",
+    description:"Young Stunners | Talhah Yunus | Talha Anjum | Jokhay (Official Music Video)",
+    image:benz,
+    category: "Rap",
+    date: "31 Dec 2022",
+    views : '3.8M',
+  },
+  {
+    _id:"M4ZoCHID9GI",
+    title:"Call Out My Name",
+    creator: "Weeknd",
+    description:"Music video by The Weeknd performing Call Out My Name. © 2018 The Weeknd XO, Inc., Manufactured and Marketed by Republic Records, a Division of UMG Recordings, Inc.",
+    image:callOutMyName,
+    category: "English",
+    date: "12 Apr 2018",
+    views : '3.3B',
+  },
+  {
+    _id:"UZ_JZaNQrAw",
+    title:"Mi Amor",
+    creator: "Sharn",
+    description:"Provided to YouTube by DistroKid | Mi Amor · Sharn · 40K · The Paul | ℗ Desi Avenue",
+    image:miAmor,
+    category: "English",
+    date: "30 sep 2022",
+    views : '40M',
+  },
+  {
+    _id:"9-Vc4xmTZKk",
+    title:"Downers At Dusk",
+    creator: "Talha Anjum",
+    description:"Official Audio for 'Downers At Dusk' by Talha Anjum from the album 'Open Letter'",
+    image:downersAtDusk,
+    category: "Rap",
+    date: "23 sep 2023",
+    views : '7.5M',
+  },
 ]; 
